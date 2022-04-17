@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="C:\Users\krottink\.android\build-cache\772da9fab2348378ebcf8941a38c3f644bd30fd8\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="150252b33b00274cc868578ade018fda0d43a3eb">
+        <dex dex="C:\Users\krottink\Desktop\War_Screen\kolton_practice\NetworkConnect-20170926T133800Z-001\NetworkConnect\Application\build\intermediates\transforms\dex\debug\folders\1000\10\classes_e37e69096c61cbdd39a1869723e7b7b6771ac9c6\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\krottink\.android\build-cache\ce4b01cc6cd1579ac09eed1ed6a5aa994c235c5c\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="052f5f840f21174a3ecf6544130194e2652cbb73">
+        <dex dex="C:\Users\krottink\Desktop\War_Screen\kolton_practice\NetworkConnect-20170926T133800Z-001\NetworkConnect\Application\build\intermediates\transforms\dex\debug\folders\1000\10\classes_7512562426f2a7571fcaf441d18dd674fd93c610\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\krottink\.android\build-cache\739f10377f5e6a8f44c35196b1312b76f2fa2812\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="45f697922e6f072daa12f8a2995dc77ab03c11da">
+        <dex dex="C:\Users\krottink\Desktop\War_Screen\kolton_practice\NetworkConnect-20170926T133800Z-001\NetworkConnect\Application\build\intermediates\transforms\dex\debug\folders\1000\10\classes_5946cf635ea8d8dcab7eb93e0345d30d99eabb83\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\krottink\.android\build-cache\7f4eb3c74197299ac66f2157719787496f496da8\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="da27a32db6af8954ee8061537c7d476fcb1df46f">
+        <dex dex="C:\Users\krottink\Desktop\War_Screen\kolton_practice\NetworkConnect-20170926T133800Z-001\NetworkConnect\Application\build\intermediates\transforms\dex\debug\folders\1000\10\classes_f6177d87f7d1efbd73e76986b4c8e01a4c0b8de2\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\krottink\.android\build-cache\1bb291f2771d9eb02f426f94b5da1cd0260d30e4\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="C:\Users\krottink\Desktop\War_Screen\kolton_practice\NetworkConnect-20170926T133800Z-001\NetworkConnect\Application\build\intermediates\transforms\dex\debug\folders\1000\10\classes_7a2e693a6999bacf596d3c79df4dac9493827957\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\krottink\.android\build-cache\f6944840b726918cee10dd07fa85cd1d4fae6d2e\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="4a26a1154d053ab11aaf4c3967c42a4d66390991">
+        <dex dex="C:\Users\krottink\Desktop\War_Screen\kolton_practice\NetworkConnect-20170926T133800Z-001\NetworkConnect\Application\build\intermediates\transforms\dex\debug\folders\1000\10\classes_d7f24faa063c5290d92e285d8445bde73bdddbb7\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\krottink\Desktop\War_Screen\kolton_practice\NetworkConnect-20170926T133800Z-001\NetworkConnect\Application\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="ea44b57efb22c7bc2afe44206df04c4afdfcd00e">
+        <dex dex="C:\Users\krottink\Desktop\War_Screen\kolton_practice\NetworkConnect-20170926T133800Z-001\NetworkConnect\Application\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_029a7b3b308d062e60cf4dd915d3846192c0df34\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\krottink\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\25.3.1\support-annotations-25.3.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="bf8841d29fa39e077730e7a91222c2ce269fa7c9">
+        <dex dex="C:\Users\krottink\Desktop\War_Screen\kolton_practice\NetworkConnect-20170926T133800Z-001\NetworkConnect\Application\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-25.3.1_a553736ebad0edd470f8314f1e125a722f534627\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\krottink\.android\build-cache\d6f7db25ffa0028232f5067c7c0459040270b589\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="6ef31f1555bb4cc513ec8d52711365a8b89f3600">
+        <dex dex="C:\Users\krottink\Desktop\War_Screen\kolton_practice\NetworkConnect-20170926T133800Z-001\NetworkConnect\Application\build\intermediates\transforms\dex\debug\folders\1000\10\classes_c4745d67212d8b54d92c8c373327fbba5f237aa2\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\krottink\.android\build-cache\0fa90095b30f849f2acd0ce2801d61edd89ba1fa\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="efb8cb62d47d157c29d1521daac7eefd4cb881ee">
+        <dex dex="C:\Users\krottink\Desktop\War_Screen\kolton_practice\NetworkConnect-20170926T133800Z-001\NetworkConnect\Application\build\intermediates\transforms\dex\debug\folders\1000\10\classes_cd28dbf3cda28bb5aefc48c7f52258e43fe1248c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\krottink\.android\build-cache\e357071eeec406da6ad09baf6c7aa79a5156aa0c\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="914f5d3e3ace66080e59613708f06d129a222e25">
+        <dex dex="C:\Users\krottink\Desktop\War_Screen\kolton_practice\NetworkConnect-20170926T133800Z-001\NetworkConnect\Application\build\intermediates\transforms\dex\debug\folders\1000\10\classes_26417ad46df7455e5b3a7f47afdb1f71c014fb89\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\krottink\.android\build-cache\1ba22982ce448505f7f4fcf5e09ccf82257f124e\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="47635644d0d5c103c1dd8360549eb9ba3225c7d3">
+        <dex dex="C:\Users\krottink\Desktop\War_Screen\kolton_practice\NetworkConnect-20170926T133800Z-001\NetworkConnect\Application\build\intermediates\transforms\dex\debug\folders\1000\10\classes_1dfd3bd062bfe19b4a309d1d1ff2214ee531bbf4\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\krottink\Desktop\War_Screen\kolton_practice\NetworkConnect-20170926T133800Z-001\NetworkConnect\Application\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="C:\Users\krottink\Desktop\War_Screen\kolton_practice\NetworkConnect-20170926T133800Z-001\NetworkConnect\Application\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_17afbf57fba5ddbc485a6c10e557c7da545d428c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\krottink\.android\build-cache\77da3e69c390a26156c936948aba070176998fd1\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="3a1bac2cc31df44dbf1f9bbf2c675319503c9271">
+        <dex dex="C:\Users\krottink\Desktop\War_Screen\kolton_practice\NetworkConnect-20170926T133800Z-001\NetworkConnect\Application\build\intermediates\transforms\dex\debug\folders\1000\10\classes_9c8877f86c0cb2389f8dc37f58ba3eb29603c501\classes.dex" />
+    </item>
+
+</items>

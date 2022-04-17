@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.myfirstapp.MainActivity">
+
+    <FrameLayout
+        android:id="@+id/layout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+        <com.example.myfirstapp.HexBoardView
+            android:id="@+id/HexMap"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <SlidingDrawer
+            android:id="@+id/simpleSlidingDrawer"
+            android:layout_width="151dp"
+            android:layout_height="wrap_content"
+            android:content="@+id/content"
+            android:layout_gravity="right"
+            android:handle="@+id/handle"
+            android:orientation="horizontal">
+            <!-- Button for the handle of SlidingDrawer -->
+            <ImageButton
+                android:id="@id/handle"
+                android:layout_width="31dp"
+                android:layout_height="131dp"
+                android:background="@null"
+                android:scaleType="fitCenter"
+                android:src="@drawable/arrow" />
+            <!-- layout for the content of the SLidingDrawer -->
+            <LinearLayout
+                android:id="@id/content"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="horizontal"
+                android:weightSum="1">
+                <!-- DEFINE ALL YOUR CONTENT,WIDGETS HERE WHICH YOU WANT TO ADD IN SLIDING DRAWER LAYOUT. -->
+                <ListView
+                    android:id="@+id/simpleListView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+        </SlidingDrawer>
+
+    </FrameLayout>
+
+
+</android.support.constraint.ConstraintLayout>

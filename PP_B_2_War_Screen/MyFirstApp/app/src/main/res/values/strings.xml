@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">"MyFirstApp"</string>
+    <string-array name="options">
+        <item>Recon</item>
+        <item>Move</item>
+        <item>Build Unit</item>
+        <item>Build Building</item>
+    </string-array>
+</resources>

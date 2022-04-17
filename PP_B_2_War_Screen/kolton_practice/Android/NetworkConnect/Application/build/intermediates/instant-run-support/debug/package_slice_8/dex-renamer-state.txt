@@ -1,0 +1,4 @@
+#Tue Sep 26 12:41:55 CDT 2017
+base.0=C\:\\Users\\krottink\\Desktop\\War_Screen\\kolton_practice\\NetworkConnect-20170926T133800Z-001\\NetworkConnect\\Application\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\5\\slice_8
+renamed.0=classes.dex
+file.0=C\:\\Users\\krottink\\Desktop\\War_Screen\\kolton_practice\\NetworkConnect-20170926T133800Z-001\\NetworkConnect\\Application\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\5\\slice_8\\classes.dex

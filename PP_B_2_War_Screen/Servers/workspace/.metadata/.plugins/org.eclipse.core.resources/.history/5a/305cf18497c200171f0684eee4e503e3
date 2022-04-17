@@ -1,0 +1,400 @@
+package servlets;
+
+import java.io.*;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.simple.*;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+/**
+ * Servlet implementation class MyServlet
+ */
+@WebServlet("/MyServlet")
+public class MyServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	private String UserWaiting = null;
+	private String match = "match";
+    /**
+     * Default constructor. 
+     */
+    public MyServlet() {
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		
+		response.setContentType("text/html");
+		PrintWriter out = response.getWriter();
+		out.println("<html><body>");
+		out.println("<h3>Hello World</h3>");
+		out.println("</body></html>");
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		response.setContentType("text/html");
+		PrintWriter out = response.getWriter();
+		
+        String reqType = request.getParameter("reqType");
+        
+        String responseMessage = "init";
+        
+        WSDatabase Database = new WSDatabase();
+        //Database.StartConnection();
+        try {
+			Database.StartConnection();
+		} catch (Exception e) {
+			e.printStackTrace();
+			out.println("database offline");
+			return;
+		}
+        
+        switch(reqType){
+        	case "register":
+        		responseMessage = register(request, Database);
+        		break;
+        	case "login":
+                responseMessage = login(request, Database);
+        		break;
+        	case "newGame":
+        		responseMessage = newGame(request, Database);
+        		break;
+        	case "chatUpdate":
+        		responseMessage = GetChatUpdate(request, Database);
+        		break;
+        	case "chatPost":
+        		responseMessage = ChatPost(request, Database);
+        		break;
+        	case "leaveGame":
+        		responseMessage = leaveGame(request, Database);
+        		break;
+        	case "updateGame":
+        		//response.setContentType("application/json");
+        		JSONObject JSONresponse = new JSONObject();
+//        		try {
+//        			JSONresponse = updateGame(request, Database);
+//        		} catch (Exception e) {
+//				// TODO Auto-generated catch block
+//        			e.printStackTrace();
+//        		}
+//       		
+        		try {
+        			JSONresponse.put("val", "val");
+        			JSONresponse.put("key", "value");
+        			JSONresponse.put("gameID", "gameID");
+        		} catch (JSONException e) {
+        			// TODO Auto-generated catch block
+        			e.printStackTrace();
+        		}
+        		
+        		Database.CutConnection();
+        		out.println(JSONresponse.toString());
+        		return;
+        		
+        	default:
+        		out.println("Invalid request");
+        		break;
+        }   
+        
+        Database.CutConnection();
+        
+        out.println(responseMessage);
+        
+        return;
+	}
+ 
+	public JSONObject updateGame(HttpServletRequest request, WSDatabase Database) throws Exception
+	{
+		
+		//String jsonString = request.getParameter("json");
+		String gameID = request.getParameter("gameID");
+		JSONObject json = null;
+		JSONObject jsonResponse = null;
+		
+		try {
+			//json = (JSONObject)new JSONParser().parse(jsonString);
+			jsonResponse = getData(json, gameID, Database);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return jsonResponse;//.toString();
+	}
+	
+	public JSONObject getData(JSONObject json, String gameID, WSDatabase Database) throws Exception
+	{
+		
+		JSONObject jsonResponse = new JSONObject();
+		
+		try {
+			jsonResponse.put("gameID", gameID);
+			
+			int i = 0;
+			
+			while(i <= 2)
+			{
+				
+				jsonResponse.put(String.valueOf(i) + "hex" + "U1", String.valueOf(Database.GetHexData(gameID, i, "U1")));
+				jsonResponse.put(String.valueOf(i) + "hex" + "U2", String.valueOf(Database.GetHexData(gameID, i, "U2")));
+				jsonResponse.put(String.valueOf(i) + "hex" + "U3", String.valueOf(Database.GetHexData(gameID, i, "U3")));
+				jsonResponse.put(String.valueOf(i) + "hex" + "Terrain", String.valueOf(Database.GetHexData(gameID, i, "Terrain")));
+				jsonResponse.put(String.valueOf(i) + "hex" + "Structure", String.valueOf(Database.GetHexData(gameID, i, "Structure")));
+				jsonResponse.put(String.valueOf(i) + "hex"+"Owner", String.valueOf(Database.GetHexData(gameID, i, "Owner")));
+				jsonResponse.put(String.valueOf(i) + "hex"+"Resource", String.valueOf(Database.GetHexData(gameID, i, "Resource")));
+				i++;
+			}
+			
+			i = 1;
+			while(i<=2)
+			{
+				jsonResponse.put(String.valueOf(i) + "player"+"Income", String.valueOf(Database.GetPlayerData(gameID, i, "Income")));
+				jsonResponse.put(String.valueOf(i) + "player"+"TCash", String.valueOf(Database.GetPlayerData(gameID, i, "TCash")));
+				jsonResponse.put(String.valueOf(i) + "player"+"UnitTotal", String.valueOf(Database.GetPlayerData(gameID, i, "UnitTotal")));
+				jsonResponse.put(String.valueOf(i) + "player"+"ResourceA", String.valueOf(Database.GetPlayerData(gameID, i, "ResourceA")));
+				i++;
+			}
+			
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return jsonResponse;
+	}
+	
+	
+	public String leaveGame(HttpServletRequest request, WSDatabase Database){
+		
+		String username = request.getParameter("username");
+		String gameID = null;
+		
+		try {
+			gameID = Database.GetGameID(username);
+			if(gameID != null){
+				Database.DeleteGame(gameID);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return "GameID still active";
+		}
+		
+		return "Main Menu";
+	}
+	
+	public String login(HttpServletRequest request, WSDatabase Database){
+		//TODO insert user
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+
+		try {
+			if(Database.ConfirmUserID(username) == null){
+				return "Invalid Username";
+			}
+			//compare password to database password;
+			else if(!Database.ConfirmUserID(username).equals(password)){
+				return "Invalid Password";
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return "Check UserName Failed";
+		}
+		
+		//is user already in a game?
+		try {
+			if(Database.GetGameID(username) == null){
+				return "Game Options";
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return "Home";
+	}
+
+	public String register(HttpServletRequest request, WSDatabase Database){
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+
+        if(password.length() < 8){
+        	return "Password too short";
+        }
+        if(password.contains(" ")){
+        	return "Invalid characters present in password";
+        }
+        if(username.contains(" ")){
+        	return "No spaces in username";
+        }
+        
+        //String password = request.getParameter("password");
+        try {
+        	if(Database.ConfirmUserID(username) != null){
+        		return "Username already taken";
+        	}
+			Database.InsertUser(username, password);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return "Error: could not insert user->" + username;
+		}
+		
+		return "Home";
+	}
+
+	public String newGame(HttpServletRequest request, WSDatabase Database){
+		
+		String username = request.getParameter("username");
+		String user1 = null;
+		String user2 = null;
+		
+//		try {
+//			user1 = Database.GetUserID(match)[0];
+//		} catch (Exception e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		}
+//
+//		//username is first in set gameID to match
+//		if(user1 == null){
+//			try {
+//				Database.SetGameID(username, match);
+//				return("Match Making");
+//			} catch (Exception e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//		}
+//		
+		if(UserWaiting == null){
+			UserWaiting = username;
+			return "Match Making";
+		}
+		
+		user1 = UserWaiting;
+		UserWaiting = null;
+		user2 = username;
+		int gameID = 1;
+		
+		try {
+			while (Database.ConfirmGameID(Integer.toString(gameID))){
+				gameID ++;
+			}
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+			return "failed to find gameID";
+		}
+		
+		try {
+			Database.InsertNewGame(Integer.toString(gameID), user1, user2);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return "failed to insert Game";
+		}
+		//Database.InsertNewGame(gameID, user1, user2);
+		return "Game Created";
+	}
+	
+	public String addMessage(HttpServletRequest request, WSDatabase Database){
+		return "Home";
+	}
+	
+	public String GetChatUpdate(HttpServletRequest request, WSDatabase Database){
+		
+		String username = request.getParameter("username");
+		String gameID;
+		Integer logNumber = 3;
+		
+		try {
+			gameID = Database.GetGameID(request.getParameter("username"));
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+			return "no gameId";
+		}
+		
+		//get the most recent chat log
+		try {
+			
+			while(Database.GetChatlog(gameID, logNumber) == null && logNumber != 0){
+				logNumber --;
+			}
+			if(logNumber == 0){
+				return "no chat logs";
+			}
+			
+			String chatMessage = Database.GetChatlog(gameID, logNumber);
+			if(chatMessage.startsWith(username) == false){
+				Database.SetChatLog(gameID, logNumber, null);
+			}
+			else{
+				return "no chat logs";
+			}
+			return chatMessage;
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return "error";
+	}
+	
+	public String ChatPost(HttpServletRequest request, WSDatabase Database){
+		
+		String username = request.getParameter("username");
+		String gameID;
+		Integer logNumber = 1;
+		
+		try {
+			gameID = Database.GetGameID(request.getParameter("username"));
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+			return "no gameId";
+		}
+		
+		//get the most recent chat log
+		try {
+			
+			while(Database.GetChatlog(gameID, logNumber) != null && logNumber != 4){
+				logNumber ++;
+			}
+			if(logNumber == 4){
+				return "Chat Log Full";
+			}
+			Database.SetChatLog(gameID, logNumber, username + ": " + request.getParameter("chatData"));
+			return "Chat Sent";
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return "error";	
+	}
+}

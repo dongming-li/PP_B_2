@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+        <item
+            android:id="@+id/Recon"
+            android:orderInCategory="100"
+            android:title="Recon"/>
+        <item
+    android:id="@+id/Move"
+    android:orderInCategory="100"
+    android:title="Move"/>
+    <item
+        android:id="@+id/BuildUnit"
+        android:orderInCategory="100"
+        android:title="Build Unit"/>
+    <item
+        android:id="@+id/BuildBuilding"
+        android:orderInCategory="100"
+        android:title="Build Buidling"/>
+
+    </menu>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/activity_main"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="8dp">
+
+    <Button
+        android:id="@+id/string_request"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/message"
+        android:onClick="onClick"
+        android:text="String Request" />
+
+    <Button
+        android:id="@+id/json_object_request"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/string_request"
+        android:onClick="onClick"
+        android:text="Json Object Request" />
+
+    <Button
+        android:id="@+id/json_array_request"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/json_object_request"
+        android:onClick="onClick"
+        android:text="Json Array Request" />
+
+    <Button
+        android:id="@+id/image_request"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/json_array_request"
+        android:onClick="onClick"
+        android:text="Image Request" />
+
+</RelativeLayout>

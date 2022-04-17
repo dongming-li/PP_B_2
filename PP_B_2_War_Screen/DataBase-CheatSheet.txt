@@ -1,0 +1,112 @@
+Tables:
+Users
+	idKey (automatic int)
+	UserID (VARCHAR 45)
+	GameID (VARCHAR 16)
+
+GameDatav1
+	GameID (VARCHAR 16)
+	User1 (VARCHAR 45)
+	User2 (VARCHAR 45)
+	Income1 INT(5) //User1's income
+	Income2 INT(5) //User2's income
+	TCash1 INT(6)  //User1's Total cash
+	TCash2 INT(6)  //User2's Total Cash
+	UnitTotal1 INT(5) //User1's Unit Total
+	UnitTotal2 INT(5) //User2's Unit Total
+	ResourceA1 INT(5) //User1's Amount of ResourceA
+	ResourceA2 INT(5) //User2's Amount of ResourceA
+	Hex0U1 SMALLINT(3) //Amount of unit1 on Hex
+	Hex0U2 SMALLINT(3) //Amount of unit1 on Hex
+	Hex0U3 SMALLINT(3) //Amount of unit1 on Hex
+	Hex0Terrain TINYINT(3) //Terrain type of Hex
+	Hex0Structure TINYINT(3) //Structure type on Hex
+	Hex0Owner TINYINT(1) //Owner of Hex (0 = neutral, 1 = player1, 2 = player2)
+	Hex0Resource TINYINT(3) //Resource type on Hex
+
+Methods:
+StartConnection()
+	Sets the connection info for the database
+	MUST BE USED BEFORE USING ANY OTHER METHOD!
+	Usage:
+		WSDatabase test = new WSDatabase();
+		test.StartConnection();
+CutConnection()
+	Clears the connection data to the database
+	Usage:
+		WSDatabase test = new WSDatabase();
+		test.StartConnection();
+		test.CutConnection();
+
+InsertUser(String userName)
+	Table: Users
+	Inserts a new UserID
+	GameID is set to Null by default
+
+SetGameID(String userName, String gameID)
+	Table: Users
+	Finds and existing User and sets their GameID
+
+DeleteUser(String userName)
+	Table: Users
+	Deletes a User from the Database
+
+NullAllGameID(String gameID)
+	Table: Users
+	Takes the given gameID, and sets all mentions of that gameID to null
+
+GetGameID(String userID)
+	Table: Users
+	Returns String
+	Returns the GameID paired with the specified UserID
+
+GetUserID(String gameID)
+	Table: Users
+	Returns String[2]
+	Returns a String array containing the two UserIDs associated with the given GameID
+
+InsertNewGame(String gameID, String user1, String user2)
+	Table: GameDatav1
+	Creates a new entry for GameDatav1
+	The GameID, User1, and User2 are set to the given values
+	The rest of the game data is hard coded into the intilization function
+
+DeleteGame(String gameID)
+	Table: GameDatav1
+	Deletes the requested game from the Database
+
+SetHexData(String gameID, int hexNumber, String dataType, int updatedData)
+	Table: GameDatav1
+	Sets the specified data on the requested hex, for the specified gameID. Inputs are as follows:
+	hexNumber: The number of any Hex currently stored in the database. Currently only stores Hex 0.
+	dataType: the requested datatype of the hex to modify, all options listed below.
+	"U1" 	    (Unit 1)
+	"U2" 	    (Unit 2)
+	"U3" 	    (Unit 3)
+	"Terrain"   (Terrain type)
+	"Structure" (Structure Type)
+	"Owner"     (Owner of Hex, 0, 1, or 2)
+	"Resource"  (Resource on Hex)
+
+GetHexData(String gameID, int hexNumber, String dataType)
+	Table: GameDatav1
+	Returns int
+	Returns the specified data on the requested hex, for the specified gameID.
+	Inputs follow the same structure as SetHexData().
+
+SetPlayerData(String gameID, int playerNumber, String dataType, int updatedData)
+	Table: GameDatav1
+	Sets the specified player data for the specified gameID. Inputs are as follows:
+	playerNumber: 1 or 2. (1 = player1's data, 2 = player2's data)
+	dataType: the requested datatype of the player to modify, all options listed below.
+	"Income"    (Player income)
+	"TCash"     (Player total cash)
+	"UnitTotal" (Player Unit Total)
+	"ResourceA" (Player total amount of ResourceA)
+
+
+GetPlayerData(String gameID, int playerNumber, String dataType)
+	Table: GameDatav1
+	Returns int
+	Returns the specified player data for the specified gameID.
+	Inputs follow the same structure as SetPlayerData().
